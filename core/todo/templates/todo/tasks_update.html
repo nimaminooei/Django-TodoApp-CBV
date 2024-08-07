@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body>
+    <div class="box add">
+      <h1>ToDo App</h1>
+      <form  method="post">
+        {% csrf_token %}
+        <div>
+          <input class="input" type="text" name="task" value="{{ form.task.value|default_if_none:'' }}" placeholder="Your Task Here!" />
+          <!-- {{ form.as_p }}  -->
+          <input class="sbtn" type="submit" value="Update Task" />
+        </div>
+      </form>
+    </div>
+</body>
+
+{% endblock %}
