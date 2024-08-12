@@ -13,10 +13,7 @@ class ApiTaskView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = TaskSerializer(queryset, many=True)
         return Response(serializer.data)
-    def post(self, request):
-        queryset = self.get_queryset()
-        serializer = TaskSerializer(queryset, many=True)
-        return Response(serializer.data)
+    
     def get_queryset(self, *args, **kwargs):
         return (super().get_queryset(*args, **kwargs).filter(user=self.request.user))
 
