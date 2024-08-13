@@ -21,28 +21,26 @@ def common_user():
 @pytest.mark.django_db
 class TestPostApi:
     def test_get_post_response_200_status(self, api_client):
-        url = reverse("blog:api-v1:post-list")
+        url = reverse("todo:api:task_list")
         response = api_client.get(url)
         assert response.status_code == 200
 
     def test_create_post_response_401_status(self, api_client):
-        url = reverse("blog:api-v1:post-list")
+        url = reverse("todo:api:task_list")
         data = {
-            "title": "test",
-            "content": "description",
+            "task": "test",
             "status": True,
-            "published_date": datetime.now(),
+            
         }
         response = api_client.post(url, data)
         assert response.status_code == 401
 
     def test_create_post_response_201_status(self, api_client, common_user):
-        url = reverse("blog:api-v1:post-list")
+        url = reverse("todo:api:task_list")
         data = {
-            "title": "test",
-            "content": "description",
+            "task": "test",
             "status": True,
-            "published_date": datetime.now(),
+            
         }
         user = common_user
         api_client.force_authenticate(user=user)
@@ -52,8 +50,11 @@ class TestPostApi:
     def test_create_post_invalid_data_response_400_status(
         self, api_client, common_user
     ):
-        url = reverse("blog:api-v1:post-list")
-        data = {"title": "test", "content": "description"}
+        url = reverse("todo:api:task_list")
+        data = {
+            "status": True,
+            
+        }
         user = common_user
 
         api_client.force_authenticate(user=user)
