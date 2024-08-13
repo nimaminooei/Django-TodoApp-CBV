@@ -57,7 +57,7 @@ class TestPostApi:
             "status": True,
             
         }
-        user = user_auth
+        user = user_auth 
 
         api_client.force_authenticate(user=user)
         response = api_client.post(url, data)
