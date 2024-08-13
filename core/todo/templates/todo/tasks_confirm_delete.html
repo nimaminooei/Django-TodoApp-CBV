@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body>
+    <div class="box add">
+      <h1>ToDo App</h1>
+      <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete " {{ object }}"?</p>
+        {{ form }}
+        <input type="submit" value="Confirm">
+    </form>
+    </div>
+</body>
+
+{% endblock %}
