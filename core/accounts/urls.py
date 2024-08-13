@@ -9,6 +9,6 @@ urlpatterns =[
     path("login/", views.loginView.as_view(), name="login"),
     path("signup/", views.SignupView.as_view(), name="signup"),
     # djoser Token & JWT
-    path('', include('djoser.urls.authtoken')),
-    path('', include('djoser.urls.jwt')),
+    path('djsr/', include('djoser.urls.authtoken')),
+    path('djsr/', include('djoser.urls.jwt')),
 ]

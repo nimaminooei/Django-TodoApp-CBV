@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.views.generic import View
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -34,6 +35,7 @@ class SignupView(FormView):
 
 
 class loginView(LoginView):
+    
     template_name = 'accounts/login.html'
     fields = "email","password"
     redirect_authenticated_user = True
