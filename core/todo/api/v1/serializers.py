@@ -7,9 +7,10 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Tasks
         fields = "__all__"
         read_only_fields = ["user"]
+
     def to_representation(self, obj):
         # remove user id when showing data
         ret = super(TaskSerializer, self).to_representation(obj)
-        ret.pop("user",None)
+        ret.pop("user", None)
 
-        return ret 
+        return ret

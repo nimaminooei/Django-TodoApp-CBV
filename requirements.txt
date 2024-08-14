@@ -7,3 +7,5 @@ djoser
 drf_yasg
 pytest
 pytest-django
+black
+flake8
