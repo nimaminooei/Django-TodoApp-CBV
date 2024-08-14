@@ -1,0 +1,122 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo-App</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(111, 131, 134);
+      }
+      .items {
+        background-color: rgba(138, 226, 255, 0.242);
+      }
+      .box {
+        border-radius: 10px;
+        margin: 10px;
+        flex-basis: 30%;
+        min-height: 100px;
+        min-width: 25rem;
+      }
+      .add h1 {
+        margin-top: 5px;
+      }
+      .add {
+        text-align: center;
+      }
+      .item {
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .task {
+        padding: 6px 12px;
+        flex-basis: 60%;
+        max-width: 60%;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        /* height: 100%; */
+      }
+      .btn {
+        flex-basis: 40%;
+        height: 100%;
+      }
+      .btn a div {
+        display: inline;
+        border-radius: 3px;
+        width: 30%;
+
+        padding: 6px;
+      }
+      .btn a {
+        color: white;
+        text-decoration: none;
+      }
+      .delete {
+        background-color: brown;
+      }
+      .Done{
+        background-color: green;
+      }
+      .edit {
+        background-color: rgb(78, 200, 241);
+      }
+      p {
+        margin-bottom: 0;
+        display: inline-block;
+        text-align: left;
+      }
+      .sbtn {
+        /* color: red; */
+        background-color: rgb(45, 255, 30);
+        border: none;
+        border-radius: 3px;
+      }
+      .add div {
+        background-color: rgba(138, 226, 255, 0.242);
+        /* height: 40px; */
+        display: flex;
+        border-radius: 10px;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-around;
+        padding: 8px;
+      }
+      .input {
+        padding: 6px 12px;
+        flex-basis: 60%;
+        max-width: 60%;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        border: none;
+      }
+      .con p{
+        display: none;
+      }
+      .con:after  {
+        content: "Delete"
+       
+      }
+      .logout{
+        position:absolute;
+        right: 10px;
+        top: 10px;
+      }
+    </style>
+  </head>
+
+
+  {% block content %}
+
+  {% endblock %}
+  
+</html>

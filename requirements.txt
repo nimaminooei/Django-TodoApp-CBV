@@ -1,0 +1,11 @@
+django
+djangorestframework
+markdown
+django-filter
+pygments
+djoser
+drf_yasg
+pytest
+pytest-django
+black
+flake8
