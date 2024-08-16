@@ -130,8 +130,14 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATIC_URL = "/static/"
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'statics',
+]
+
 
 # REST FRAMEWORK
 REST_FRAMEWORK = {
@@ -147,3 +153,6 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.JWTAuthentication',
     ],
 }
+
+
+CELERY_BROKER_URL = 'redis://redis:6379/1'

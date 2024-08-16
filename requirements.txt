@@ -9,3 +9,6 @@ pytest
 pytest-django
 black
 flake8
+faker
+celery
+Redis
