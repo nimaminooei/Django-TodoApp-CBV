@@ -1,12 +1,38 @@
-from django.shortcuts import redirect
-from django.views.generic import View
-from .models import Tasks
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import View
+from django.core.cache import cache
+from django.shortcuts import redirect
+from django.views import View
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import TaskUpdateForm
+from django.http import JsonResponse
+import requests
 
+from .forms import TaskUpdateForm
+from .models import Tasks
+
+
+WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
+API_KEY = "4c6afb8de79979cf64c1e16c93bffa91"
+CITY = "Tehran"
+class WeatherAPIView(View):
+    cache_key = 'weather_data'
+
+    def get_weather_data(self):
+        response = requests.get(WEATHER_API_URL, params={"q": CITY, "appid": API_KEY})
+        return response.json()
+    def get(self, request, *args, **kwargs):
+
+        weather_data = cache.get(self.cache_key)
+
+        if not weather_data:
+            
+            weather_data = self.get_weather_data()
+            
+            cache.set(self.cache_key, weather_data, timeout=20*60)
+
+        return JsonResponse(weather_data)
 
 class index(LoginRequiredMixin, ListView):
     model = Tasks
@@ -56,3 +82,5 @@ class TaskDone(LoginRequiredMixin, View):
         Task.status = True
         Task.save()
         return redirect(self.success_url)
+
+

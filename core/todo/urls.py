@@ -11,4 +11,7 @@ urlpatterns = [
     path("done/<int:pk>/", views.TaskDone.as_view(), name="done"),
     # API
     path("api/v1/", include("todo.api.v1.urls"), name="api"),
+    # Weather 
+    path("weather/", views.WeatherAPIView.as_view(), name="weather")
+
 ]
