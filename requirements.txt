@@ -13,3 +13,4 @@ faker
 celery
 Redis
 django-redis
+gunicorn

@@ -17,6 +17,7 @@ services:
     environment:
       - SECRET_KEY=test
       - DEBUG=True
+      - ALLOWED_HOSTS=*
     depends_on :
     - redis
   worker:
