@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h5><a href="{% url 'blog:list-post' %}">back</a></h5>
+    <h1>{{ object.title}}</h1>
+    <h3>{{ object.content}}</h3>
+    <h4>{{ object.author}}</h4>
+
+    {{ object.updated_date}}
+
+    <hr />
+    <h2>Comments</h2>
+    {% for comment in comments %}
+    <p>
+      <strong>{{ comment.author }}:</strong> {{ comment.text }}
+      <em>{{ comment.created_at }}</em>
+    </p>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+
+    <h2>Leave a Comment</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Add Comment</button>
+    </form>
+  </body>
+</html>

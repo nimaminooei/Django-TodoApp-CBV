@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm
+from .form import CustomUserCreationForm
 
 
 # Create your views here.
@@ -20,7 +20,7 @@ class LogoutView(LoginRequiredMixin, View):
 
 class SignupView(FormView):
     template_name = "accounts/signup.html"
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy("todo:index")
 
@@ -35,11 +35,9 @@ class SignupView(FormView):
             login(self.request, user)
         return super(SignupView, self).form_valid(form)
 
-
 class loginView(LoginView):
-
     template_name = "accounts/login.html"
-    fields = "email", "password"
+    fields = "username", "password"
     redirect_authenticated_user = True
 
     def get_success_url(self):

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+</head>
+<body>
+   
+
+    <div class="box add">
+      <h1>Confirm</h1>
+      <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete " {{ object.title }}"?</p>
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+    </div>
+
+
+</body>
+</html>

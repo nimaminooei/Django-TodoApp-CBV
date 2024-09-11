@@ -18,7 +18,7 @@
 
 <form
     method="post"
-    action="{% url 'accounts:login' %}"
+    action="{% url 'accounts:basic-login' %}"
     style="
       width: 40rem;
       margin: auto;
@@ -59,7 +59,7 @@
     <input class="btn btn-primary" type="submit" value="Submit" />
   </form>
   <p>
-    <a href="{% url 'accounts:signup' %}">sign up</a>
+    <a href="{% url 'accounts:basic-signup' %}">sign up</a>
   </p>
 </body>
 {% endblock %}

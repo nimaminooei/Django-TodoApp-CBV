@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+</head>
+<body>
+    <h1>update Post</h1>
+    <form action="" method="post">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">title</label>
+            <input name="title" type="text" value="{{ post.title|default_if_none:'' }}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">textarea</label>
+            <Textarea name="content"  class="form-control"  id="exampleFormControlTextarea1" rows="3">{{ post.content|default_if_none:'' }}</Textarea>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" name="category" multiple >
+              {% for i in categorys %}
+              {% if i in post.category.all %}
+              <option selected value="{{i.id}}">{{i}}</option>
+              {% else %}
+              <option value="{{i.id}}">{{i}}</option>
+              {% endif %}
+              {% endfor %}
+          </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          {% csrf_token %}
+    </form>
+</body>
+</html>

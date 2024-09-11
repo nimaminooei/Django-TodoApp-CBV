@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # apps
     "accounts",
     "todo",
+    "blog",
     # rest_framework
     "rest_framework",
     "corsheaders",
@@ -64,6 +65,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 TEMPLATES = [
     {
@@ -141,8 +143,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'statics',
 ]
-
-
 # REST FRAMEWORK
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -151,8 +151,8 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.TokenAuthentication",
         # 'rest_framework.authentication.JWTAuthentication',
     ],
