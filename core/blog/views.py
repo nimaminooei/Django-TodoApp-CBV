@@ -7,6 +7,11 @@ from django.urls import reverse_lazy
 from .forms import PostUpdateForm,CommentForm
 from blog.models import post,category
 from django.http import HttpResponseRedirect
+from django.views import View
+class indexview(View):
+    def get(self, request, *args, **kwargs):
+        template_name = "index.html"
+
 
 class PostList(ListView):
     model = post
