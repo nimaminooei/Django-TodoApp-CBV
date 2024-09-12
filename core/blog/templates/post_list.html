@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,30 +11,65 @@
     <link rel="stylesheet" href="css/mobiscroll.javascript.min.css" />
   </head>
   <body>
-    <h1>Posts - <a href="{% url 'blog:create-post' %}">create one</a></h1>
-    <form action="" method="get">
-      <select class="form-select" name="category" multiple >
-            {% for i in category %}
-            <option value="{{i.id}}">{{i}}</option>
-            {% endfor %}
+    <div class="home">
+      <a
+        style="float: right; text-decoration: none; color: black"
+        href="{% url 'index' %}"
+        >( home )</a
+      >
+    </div>
+    <h1>Django Blog  Project</h1>
+    <div class="sec">
+
+      <form action="" method="get">
+        <select class="form-select" name="category" multiple style="min-width: 80px;">
+          {% for i in category %}
+          <option value="{{i.id}}">{{i}}</option>
+          {% endfor %}
         </select>
-      <input type="submit" />
-    </form>
-    {% for post in post %}
-    <li>
-      <a href="{% url 'blog:detail-post' pk=post.id %}"
-        >{{post.title}} - [ {% for i in post.category.all %} {{ i }} {% endfor %} ]
-      </a>
+        <input type="submit"  value="filter" />
+      </form>
+      <div class="boxt">
+        <h2 >All Posts</h2>
+        <a href="{% url 'blog:create-post' %}">Create Post</a>
+      </div>
+    </div>
+    <div class="box">
+      {% for post in post %}
+      <div class="items">
+        <a
+          href="{% url 'blog:detail-post' pk=post.id %}"
+          style="font-size: 35px"
+        >
+        <div>
+            {{post.title}}
+            <br>
+            <p>
+              {{post.author}}
+              <br>
+              {{post.updated_date|timesince}}
+              <br>
+              <div class="cate">
+                {% for i in post.category.all %} 
+                <p>
 
-      {% if user == post.author %}
-      <br />
-      <a href="{% url 'blog:update-post' pk=post.id %}"> edit </a>
-      <a href="{% url 'blog:delete-post' pk=post.id %}"> delete </a>
-      {% endif %}
-      <hr />
-    </li>
-    {% endfor %}
+                {{ i }} 
+              </p>
+                {% endfor %}
+              </div>
+            </p>
+          </div>
+        </a>
 
+        {% if user == post.author %}
+        <div>
+          <a href="{% url 'blog:update-post' pk=post.id %}"> edit </a>
+          <a href="{% url 'blog:delete-post' pk=post.id %}"> delete </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
     <script src="js/mobiscroll.javascript.min.js"></script>
     <script>
       mobiscroll.setOptions({
@@ -50,5 +86,73 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <style>
+      .sec{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        max-width: 80%;
+        margin: 5px auto;
+        align-items: end;
+
+      }
+      .boxt{
+        display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: space-between;
+      }
+      .cate{
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .cate p{
+        text-align: center;
+        border: 0.5px solid black;
+        padding: 2px;
+        border-radius: 15%;
+        margin: 2px;
+        margin-block-start: 1em;
+    margin-block-end: 1em;
+      }
+      body {
+        vertical-align: center;
+      }
+      .home {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+      .box a {
+        margin-left: 5px;
+        color: black;
+      }
+      a p{
+        font-size: 15px;
+      }
+      .items {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 180px;
+        height: 220px;
+        background-color: whitesmoke;
+        margin: 5px;
+        padding: 4px;
+      }
+      .box {
+        justify-content: space-around;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 80%;
+        border-radius: 5px;
+        padding: 8px;
+        margin: 5px auto;
+        border: 1px solid black;
+      }
+    </style>
   </body>
 </html>
