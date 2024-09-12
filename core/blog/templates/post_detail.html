@@ -21,6 +21,12 @@
 
       {{ object.updated_date|timesince}}
     </div>
+    {% if user == object.author %}
+        <div class="post2">
+          <a href="{% url 'blog:update-post' pk=post.id %}"> edit </a>
+          <a href="{% url 'blog:delete-post' pk=post.id %}"> delete </a>
+        </div>
+        {% endif %}
 
     <hr />
     <div class="comments">
@@ -39,18 +45,18 @@
         <h3>Add your Comment</h3>
         <form method="post">
           {% csrf_token %} {{ form.as_p }}
-          <button type="submit" > Add Comment </button>
+          <button type="submit">Add Comment</button>
         </form>
       </div>
     </div>
     <style>
-      .addcmd{
+      .addcmd {
         display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-      textarea{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      textarea {
         height: 120px;
         width: 250px;
       }
@@ -61,10 +67,11 @@
         border: 1px solid #000000;
         margin: 10px auto;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
       }
-      .boxc{
+      .boxc {
         display: flex;
         flex-direction: column;
       }
@@ -74,6 +81,23 @@
         width: 300px;
         padding: 20px;
         min-height: 400px;
+        margin: 10px auto;
+        background-color: whitesmoke;
+        justify-content: space-between;
+        border-radius: 15px;
+      }
+      .post2 a{
+        border-radius: 15px;
+        padding: 15px;
+        border: 1px solid #000000;
+        color:#000000;
+      }
+      .post2 {
+        display: flex;
+        flex-direction: row;
+        width: 300px;
+        padding: 20px;
+        /* min-height: 400px; */
         margin: 10px auto;
         background-color: whitesmoke;
         justify-content: space-between;
