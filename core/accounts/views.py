@@ -22,11 +22,11 @@ class SignupView(FormView):
     template_name = "accounts/signup.html"
     form_class = CustomUserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy("todo:index")
+    success_url = reverse_lazy("index")
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return redirect("todo:index")
+            return redirect("index")
         return super(SignupView, self).get(*args, **kwargs)
 
     def form_valid(self, form):
@@ -41,4 +41,4 @@ class loginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy("todo:index")
+        return reverse_lazy("index")

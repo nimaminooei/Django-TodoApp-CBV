@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import render
 
+app_name = "core"
+
 schema_view = get_schema_view(
     openapi.Info(
         title="ToDoApp API",
@@ -44,7 +46,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("todo/", include("todo.urls")),
     path("blog/", include("blog.urls")),
-    path("",indexView , name="index"),
+    path("", indexView , name="index"),
     path("accounts/", include("accounts.urls")),
     path(
         "swagger/",

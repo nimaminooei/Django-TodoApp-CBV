@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django-Project</title>
+</head>
+<body>
+    <h1>Django-Project</h1>
+    <br>
+    <h2>Choose From Apps</h2>
+
+    <div class="box">
+        <a href="{% url 'todo:index' %}">
+            <div class="item"><p>Todo</p></div>
+        </a>
+        <a href="{% url 'blog:list-post' %}">
+            <div class="item"><p>Blog</p></div>
+        </a>
+    </div>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        .item p{
+            font-size: 34px;
+            color: crimson;
+        }
+        .item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: 2px dotted #ff9f10;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        body{
+            background-color: rgb(96, 252, 255);
+        }
+        h1{
+            text-align: center;
+            color: rgb(143, 0, 159);
+            
+        }
+        h2{
+            text-align: center;
+            color:  rgb(191, 15, 226);
+        }
+    </style>
+</body>
+</html>
