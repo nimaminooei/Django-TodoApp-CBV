@@ -1,33 +1,91 @@
+{% load static %} {% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
     <title>Document</title>
   </head>
   <body>
-    <h5><a href="{% url 'blog:list-post' %}">back</a></h5>
-    <h1>{{ object.title}}</h1>
-    <h3>{{ object.content}}</h3>
-    <h4>{{ object.author}}</h4>
+    <a href="{% url 'blog:list-post' %}"><h5 class="back">( back )</h5></a>
+    <br />
+    <h1 style="margin-left: 35px; margin-top: 15px">
+      Django Blog - Single Page
+    </h1>
+    <div class="post">
+      <h1>{{ object.title}}</h1>
+      <h3>{{ object.content}}</h3>
+      <h4>{{ object.author}}</h4>
 
-    {{ object.updated_date}}
+      {{ object.updated_date|timesince}}
+    </div>
 
     <hr />
-    <h2>Comments</h2>
-    {% for comment in comments %}
-    <p>
-      <strong>{{ comment.author }}:</strong> {{ comment.text }}
-      <em>{{ comment.created_at }}</em>
-    </p>
-    {% empty %}
-    <p>No comments yet.</p>
-    {% endfor %}
-
-    <h2>Leave a Comment</h2>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Add Comment</button>
-    </form>
+    <div class="comments">
+      <div class="boxc">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+        <p>
+          <strong>{{ comment.author }}:</strong> {{ comment.text }}
+          <em>{{ comment.created_at|timesince }}</em>
+        </p>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
+      </div>
+      <div class="addcmd">
+        <h3>Add your Comment</h3>
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" > Add Comment </button>
+        </form>
+      </div>
+    </div>
+    <style>
+      .addcmd{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+      textarea{
+        height: 120px;
+        width: 250px;
+      }
+      .comments {
+        padding: 15px;
+        width: 60%;
+        border-radius: 15px;
+        border: 1px solid #000000;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .boxc{
+        display: flex;
+        flex-direction: column;
+      }
+      .post {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        padding: 20px;
+        min-height: 400px;
+        margin: 10px auto;
+        background-color: whitesmoke;
+        justify-content: space-between;
+        border-radius: 15px;
+      }
+      .back {
+        text-decoration: none;
+        color: black;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+    </style>
   </body>
 </html>
