@@ -22,6 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf.urls.static import static
 from django.conf import settings
+from django.shortcuts import render
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -35,12 +36,15 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+def indexView(request):
 
+    return render(request, 'index.html')
+    
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("todo/", include("todo.urls")),
-    path("", include("blog.urls")),
-    # path("",),
+    path("blog/", include("blog.urls")),
+    path("",indexView , name="index"),
     path("accounts/", include("accounts.urls")),
     path(
         "swagger/",
