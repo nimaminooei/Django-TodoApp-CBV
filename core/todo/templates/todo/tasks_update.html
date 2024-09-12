@@ -7,7 +7,7 @@
       <form  method="post">
         {% csrf_token %}
         <div>
-          <input class="input" type="text" name="task" value="{{ form.task.title|default_if_none:'' }}" placeholder="Your Task Here!" />
+          <input class="input" type="text" name="task" value="{{ form.task.value }}" placeholder="Your Task Here!" />
           <!-- {{ form.as_p }}  -->
           <input class="sbtn" type="submit" value="Update Task" />
         </div>

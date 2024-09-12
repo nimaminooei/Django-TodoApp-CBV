@@ -4,7 +4,7 @@
   <body>
     <div class="logout"><a style="text-decoration: none; color: black;" href="{% url 'accounts:basic-logout' %}">( Logout )</a></div>
     <div class="box add">
-      <h1>d App</h1>
+      <h1>،ToDo App</h1>
       <form action="{% url 'todo:create' %}" method="post">
         {% csrf_token %}
         <div>
