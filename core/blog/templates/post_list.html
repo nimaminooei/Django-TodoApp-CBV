@@ -1,5 +1,6 @@
 {% load static %}
 {% load humanize %}
+{% load filter %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,7 +43,7 @@
           style="font-size: 35px"
         >
         <div>
-            {{post.title}}
+            {{post.title|first_word }}
             <br>
             <p>
               {{post.author}}
