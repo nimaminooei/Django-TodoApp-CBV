@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 import pytest
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 
@@ -12,11 +13,12 @@ def api_client():
 
 @pytest.fixture
 def user_auth():
+    User = get_user_model()  # مدل کاربری سفارشی را دریافت می‌کند
     user = User.objects.create_user(
-     username="nimaa", password="Nima1234@"
+        username="nima", 
+        password="123"
     )
     return user
-
 
 @pytest.mark.django_db
 class TestPostApi:
