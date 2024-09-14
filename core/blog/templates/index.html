@@ -1,60 +1,105 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django-Project</title>
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <h1>Django-Project</h1>
-    <br>
     <h2>Choose From Apps</h2>
 
     <div class="box">
-        <a href="{% url 'todo:index' %}">
-            <div class="item"><p>Todo</p></div>
-        </a>
-        <a href="{% url 'blog:list-post' %}">
-            <div class="item"><p>Blog</p></div>
-        </a>
+      <a href="{% url 'todo:index' %}">
+        <div class="item"><p>Todo</p></div>
+      </a>
+      <a href="{% url 'blog:list-post' %}">
+        <div class="item"><p>Blog</p></div>
+      </a>
     </div>
     <style>
-        
-        a{
-            text-decoration: none;
-        }
-        .item p{
-            font-size: 34px;
-            color: crimson;
-        }
-        .item{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            border: 2px dotted #ff9f10;
-            width: 100px;
-            height: 100px;
-            text-align: center;
+      .bungee-spice-regular {
+        font-family: "Bungee Spice", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .honk {
+        font-family: "Honk", system-ui;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "MORF" 15, "SHLN" 50;
+      }
+      .luckiest-guy-regular {
+        font-family: "Luckiest Guy", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        }
-        .box {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        body{
-            background-color: rgb(255 197 241);
-        }
-        h1{
-            text-align: center;
-            color: rgb(143, 0, 159);
-            
-        }
-        h2{
-            text-align: center;
-            color:  rgb(191, 15, 226);
-        }
+      h1 {
+        font-size: 60px;
+        font-family: "Bungee Spice";
+      }
+      h2 {
+        font-size: 50px;
+        font-family: "Honk";
+      }
+      a {
+        text-decoration: none;
+      }
+      .item p {
+        font-size: 50px;
+        letter-spacing: 10px;
+        color: crimson;
+      }
+
+      .item {
+        font-family: "Luckiest Guy";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("{% static 'images/background.png' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border-radius: 2px;
+        /* border: 2px dotted #ff9f10; */
+        width: 266px;
+        height: 100px;
+        text-align: center;
+      }
+      .box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      body {
+        background-color: rgb(255 197 241);
+      }
+      h1 {
+        text-align: center;
+        color: rgb(143, 0, 159);
+      }
+      h2 {
+        text-align: center;
+        color: rgb(191, 15, 226);
+      }
     </style>
-</body>
+  </body>
 </html>
