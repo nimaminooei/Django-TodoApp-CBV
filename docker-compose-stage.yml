@@ -20,6 +20,7 @@ services:
     environment:
       - SECRET_KEY=test
       - DEBUG=False
+      - ALLOWED_HOSTS=*
     depends_on :
       - redis
   worker:

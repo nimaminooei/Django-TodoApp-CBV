@@ -1,18 +1,38 @@
+# general  modules 
 django
+Pillow
 djangorestframework
-django-cors-headers
+
+# env controlls
+python-decouple
+
+# third party modules
 markdown
 django-filter
-python-decouple
-pygments
-djoser
+django-cors-headers
 drf_yasg
-pytest
-pytest-django
+djoser
+
+# deployment module
+gunicorn
+
+
+# refactoring and tests
 black
 flake8
-faker
+pytest
+pytest-django
+Faker
+
+
+# background proccess and cache
 celery
-Redis
 django-redis
-gunicorn
+Redis
+
+pygments
+
+
+
+
+
